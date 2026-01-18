@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>আমার ফ্রি ওয়েবসাইট</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+    }
+    input {
+      width: 60%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    pre {
+      background: #eee;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: left;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>স্বাগতম আমার ফ্রি ওয়েবসাইটে!</h1>
+  <p>এখানে Title লিখুন এবং Submit বাটনে ক্লিক করুন।</p>
+
+  <input type="text" id="title" placeholder="Enter your video title here">
+  <br>
+  <button onclick="submitTitle()">Submit</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    function submitTitle() {
+      const title = document.getElementById("title").value.trim();
+      const output = document.getElementById("output");
+      if(!title) {
+        output.textContent = "দয়া করে Title লিখুন।";
+        return;
+      }
+
+      // Demo logic (API ছাড়া)
+      const generatedTitle = "Optimized Title: " + title + " (Example)";
+      const description = "Description: This is a demo description for '" + title + "'.";
+      const tags = ["ExampleTag1", "ExampleTag2", "ExampleTag3"];
+
+      output.textContent = 
+        generatedTitle + "\n\n" + 
+        description + "\n\n" + 
+        "Tags: " + tags.join(", ");
+    }
+  </script>
+</body>
+</html>
