@@ -1,69 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>আমার ফ্রি ওয়েবসাইট</title>
+  <title>Free Video Title Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f9f9f9;
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 20px;
     }
-    input {
-      width: 60%;
-      padding: 10px;
-      margin: 10px 0;
+    h1 {
+      text-align: center;
+      color: #38bdf8;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
       font-size: 16px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #4CAF50;
-      color: white;
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      background: #38bdf8;
+      color: #020617;
+      font-size: 18px;
+      font-weight: bold;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
+      cursor: pointer;
     }
-    pre {
-      background: #eee;
-      padding: 15px;
+    button:hover {
+      background: #0ea5e9;
+    }
+    .output {
       margin-top: 20px;
-      text-align: left;
-      white-space: pre-wrap;
-      word-wrap: break-word;
+      background: #020617;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .label {
+      color: #7dd3fc;
+      margin-top: 10px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>স্বাগতম আমার ফ্রি ওয়েবসাইটে!</h1>
-  <p>এখানে Title লিখুন এবং Submit বাটনে ক্লিক করুন।</p>
 
-  <input type="text" id="title" placeholder="Enter your video title here">
-  <br>
-  <button onclick="submitTitle()">Submit</button>
+<h1>🎬 ফ্রি ভিডিও কনটেন্ট জেনারেটর</h1>
 
-  <pre id="output"></pre>
+<label class="label">ভিডিও টাইটেল লিখুন:</label>
+<input type="text" id="titleInput" placeholder="যেমন: ছোট বাচ্চার দয়া দেখে মানুষ কাঁদলো">
 
-  <script>
-    function submitTitle() {
-      const title = document.getElementById("title").value.trim();
-      const output = document.getElementById("output");
-      if(!title) {
-        output.textContent = "দয়া করে Title লিখুন।";
-        return;
-      }
+<button onclick="generate()">Generate</button>
 
-      // Demo logic (API ছাড়া)
-      const generatedTitle = "Optimized Title: " + title + " (Example)";
-      const description = "Description: This is a demo description for '" + title + "'.";
-      const tags = ["ExampleTag1", "ExampleTag2", "ExampleTag3"];
+<div class="output">
+  <div class="label">SEO Friendly Title</div>
+  <textarea id="newTitle"></textarea>
 
-      output.textContent = 
-        generatedTitle + "\n\n" + 
-        description + "\n\n" + 
-        "Tags: " + tags.join(", ");
-    }
-  </script>
+  <div class="label">Description</div>
+  <textarea id="description"></textarea>
+
+  <div class="label">Tags</div>
+  <textarea id="tags"></textarea>
+</div>
+
+<script>
+function generate() {
+  const title = document.getElementById("titleInput").value.trim();
+  if (!title) {
+    alert("অনুগ্রহ করে একটি টাইটেল লিখুন");
+    return;
+  }
+
+  const keywords = title.split(" ").slice(0, 6).join(" ");
+
+  document.getElementById("newTitle").value =
+    title + " | Emotional & Viral Video";
+
+  document.getElementById("description").value =
+    "এই ভিডিওতে আপনি দেখবেন " + title +
+    ". ভিডিওটি সম্পূর্ণ বাস্তব অনুভূতির উপর তৈরি করা হয়েছে যা আপনাকে শেষ পর্যন্ত দেখার জন্য বাধ্য করবে। ভিডিওটি ভালো লাগলে অবশ্যই লাইক ও শেয়ার করবেন।";
+
+  document.getElementById("tags").value =
+    keywords +
+    ", viral video, emotional video, facebook viral, short video, human emotion, bangla video";
+}
+</script>
+
 </body>
 </html>
